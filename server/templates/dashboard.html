@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Projects - Anurag Video Mixing Zone</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+        box-sizing: border-box;
+        {% comment %} border: 1px solid black; {% endcomment %}
+    }
+
+    input{
+        height: 5vh; width: 60%;
+        margin: 2vh;
+        background-color: #f1dfd7
+        border: none;
+    }
+
+    button{
+        padding: 2vh;
+        width: 25vw;
+        background-color: red;
+        border: none;
+        font-weight: bold;
+        color: #fff;
+    }
+
+
+    .project-container{
+        height:100%; width: 100%; display:grid; grid-template-columns: auto auto auto; padding: 5vh ; gap: 1vh;
+    }
+
+    img{
+        height:300px; width: 300px;
+    }
+
+    @media screen and (max-width: 480px){
+        .project-container{
+            {% comment %} background-color: green; {% endcomment %}
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        img{
+        height:100px; width: 100px;
+    }
+    }
+
+</style>
+<body>
+    <div style='background: #ff5e54;'>
+        {% comment %} {{msg}} {% endcomment %}
+        <center><h3 style='display: inline-block'>Dashboard - Anurag Video Mixing Zone</h3></center>
+        <hr>
+        <a href="{% url "addProject" %}"><button style='background: green; margin: 2vh;'>Add Projects</button></a>
+        <div class='project-container' style=''>
+        {% for p in project %}
+            <div>
+                <img style='' src={{p.image.url}} alt={{p.name}}>
+                <p>{{p.description}}</p>
+                <a href="{% url "deleteProject" p.id%}">
+                    <button>Delete</button>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
