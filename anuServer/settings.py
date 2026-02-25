@@ -137,5 +137,5 @@ cloudinary.config(
 
 
 CORS_ALLOWED_ORIGINS = [
-    os.environ.get('ALLOWED_ORIGIN')
+    "https://anurag-video-mixing-zone.onrender.com",
 ]
